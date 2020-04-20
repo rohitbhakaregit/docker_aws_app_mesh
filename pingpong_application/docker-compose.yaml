@@ -1,0 +1,15 @@
+version: '3'
+services:
+  ping-pong:
+    build: pingpong
+    environment:
+      - DING_HOST=serviceb.apps.local
+      - DING_PORT=90
+    ports:
+      - "8080:8080"
+  envoy:                          # actual container name
+    image: 840364872350.dkr.ecr.us-east-1.amazonaws.com/aws-appmesh-envoy:v1.12.2.1-prod
+    user: "1337"
+    environment:
+            - APPMESH_VIRTUAL_NODE_NAME=mesh/apps/virtualNode/serviceA
+    network_mode: host

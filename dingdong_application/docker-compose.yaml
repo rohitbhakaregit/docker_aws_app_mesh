@@ -1,0 +1,13 @@
+version: '3'
+services:
+  ding-dong:
+    build: dingdong
+    ports:
+      - "8090:8090"
+  envoy:                          # actual container name
+    image: 840364872350.dkr.ecr.us-east-1.amazonaws.com/aws-appmesh-envoy:v1.12.2.1-prod
+    user: "1337"
+    environment:
+      - APPMESH_VIRTUAL_NODE_NAME=mesh/apps/virtualNode/serviceB
+    network_mode: host
+

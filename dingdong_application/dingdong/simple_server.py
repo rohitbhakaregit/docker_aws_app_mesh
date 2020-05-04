@@ -5,7 +5,7 @@ app = Flask(__name__)
 @app.route('/ding')
 def hello_world():
     """Print 'Hello, world!' as the response body."""
-    return 'dong'
+    return 'dong-server-2'
 
 @app.route('/ready')
 def healthcheck():

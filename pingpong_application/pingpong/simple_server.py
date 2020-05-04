@@ -1,6 +1,9 @@
 from flask import Flask
 import os
 import requests
+import urllib.request
+
+
 
 app = Flask(__name__)
 
@@ -19,10 +22,13 @@ def isding():
     dingHost= os.getenv("DING_HOST","pingpong-service")        # virtual node name 
     dingPort = os.getenv("DING_PORT", "8090")                     # virtual port for dingdong 
     dingURL = "http://%s:%s/ding"%(dingHost,dingPort)
-
     ding_server_response = requests.get(url=dingURL)
+    with urllib.request.urlopen(dingURL) as url:
+        s = url.read()
+
+
     if ding_server_response.status_code == 200:
-        return "yes dong"
+        return " yes dong "+" from "+str(s)
     else:
         return "no dong"
 

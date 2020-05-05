@@ -14,9 +14,8 @@ services:
             - APPMESH_VIRTUAL_NODE_NAME=mesh/demo/virtualNode/pingpong-node
             - ENVOY_LOG_LEVEL=info
             - AWS_REGION=us-east-1
-            - AWS_ACCESS_KEY_ID=AKIAV2PDSSJC3F4V27N2
-            - AWS_SECRET_ACCESS_KEY=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
-
+            - AWS_ACCESS_KEY_ID=<aws-id>
+            - AWS_SECRET_ACCESS_KEY=<aws-key>
     network_mode: host
 
   proxyinit:                     # injector container 
